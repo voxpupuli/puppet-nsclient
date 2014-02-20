@@ -1,56 +1,11 @@
 class nsclient (
-  $allowed_hosts = undef
-) {
+  $allowed_hosts = $nsclient::params::allowed_hosts
+) inherits nsclient::params {
 
-  case $::architecture {
-    'x64': {
-      $file_name = 'nscp-0.4.1.101-x64.msi'
-      # .msi GUID is used instead of package name in order to handle upgrades
-      $package_name = '{B263D105-744D-49AA-A25C-B222BB40F29C}'
-      }
-    'x86', default: {
-      $file_name = 'ncsp-0.4.1.101-Win32.msi'
-      # .msi GUID is used instead of package name in order to handle upgrades
-      $package_name = '{8D2CD2C8-5DAB-47EB-98B9-33F103010BBA}'
-    }
-  }
+  validate_re($::osfamily, '^(Windows)$', 'This module only works on Windows based systems.')
 
-  if ! defined(File['C:\PuppetScripts']) {
-    file { 'C:\PuppetScripts':
-      ensure => directory,
-    }
-  }
-
-  if ($::operatingsystem == 'windows') {
-    download_file { 'NSCP-install':
-      url                    => "http://artifactory.otsql.opentable.com:8081/artifactory/puppet/windows/nsclient/4.1/${file_name}",
-      destination_directory  => 'C:/PuppetScripts',
-      proxyAddress           => hiera('proxy::client::proxy_server')
-    }
-
-    package { $package_name:
-      ensure  => installed,
-      source  => "C:\\PuppetScripts\\${file_name}",
-      require => Download_file['NSCP-install'],
-    }
-
-    file { 'C:\Program Files\NSClient++\nsclient.ini':
-      ensure  => file,
-      owner   => 'SYSTEM',
-      mode    => '0664',
-      content => template('application_nscp/nsclient.ini.erb'),
-      notify  => Service['nscp'],
-      require => Package[$package_name]
-    }
-
-    service { 'nscp':
-      ensure  => running,
-      enable  => true,
-      require => File['C:\Program Files\NSClient++\nsclient.ini'],
-    }
-  }
-  else {
-    fail('This module is only supported on Windows')
-  }
+  class {'nsclient::install':} ->
+  class {'nsclient::service':} ->
+  Class['nsclient']
 
 }
