@@ -1,3 +1,7 @@
 *.iml
 Gemfile.lock
 /.idea/*
+pkg
+spec/fixtures
+.rspec_system
+.bundle/

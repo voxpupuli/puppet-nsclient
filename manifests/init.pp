@@ -34,7 +34,6 @@ class nsclient (
   validate_string($package_version)
 
   class {'nsclient::install':} ->
-  class {'nsclient::config': } ~>
   class {'nsclient::service':} ->
   Class['nsclient']
 
