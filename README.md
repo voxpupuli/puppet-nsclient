@@ -40,3 +40,12 @@ class { 'nsclient':
   allowed_hosts => ['10.21.0.0/22','10.21.4.0/22'],
 }
 ```
+
+Contribute:
+--
+
+* Fork it
+* Create a branch
+* Improve/fix (with spec tests)
+* Push new branch
+* Submit a PR
