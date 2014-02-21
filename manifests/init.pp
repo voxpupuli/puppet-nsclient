@@ -5,7 +5,7 @@
 # === Parameters
 #
 # [*allowed_hosts*]
-#   Comma delimted string of hosts that your client can communicate with. You can use netmasks (/ syntax) or * to create ranges.
+#   Array of hosts that your client can communicate with. You can use netmasks (/ syntax) or * to create ranges.
 #
 # [*service_state*]
 #   Whether you want to nsclient service to start up

@@ -4,7 +4,8 @@
 
 class nsclient::service(
   $service_state  = $nsclient::service_state,
-  $service_enable = $nsclient::service_enable
+  $service_enable = $nsclient::service_enable,
+  $allowed_hosts  = $nsclient::allowed_hosts
 ) {
 
   case $::osfamily {

@@ -3,7 +3,7 @@
 # Defaut parameter values for the nsclient module
 #
 class nsclient::params {
-  $allowed_hosts           = undef
+  $allowed_hosts           = []
   $service_state           = 'running'
   $service_enable          = true
   $package_source_location = 'http://files.nsclient.org/stable'
