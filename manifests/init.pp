@@ -1,6 +1,6 @@
 # == Class: nsclient
 #
-# Module to install an up-to-date version of Docker from package.
+# Module to install NSClient on Windows.
 #
 # === Parameters
 #

@@ -1,7 +1,7 @@
 # == Class: nscient::paramrs
 #
 # Defaut parameter values for the nsclient module
-#
+
 class nsclient::params {
   $allowed_hosts           = []
   $service_state           = 'running'
