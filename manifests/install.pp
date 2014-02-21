@@ -6,13 +6,13 @@ class nsclient::install {
 
   validate_re($::osfamily, '^(Windows)$', 'This module can only work on Windows Systems.')
   validate_string($nsclient::package_source_location)
-  validate_string($nsclient::package_version)
+  validate_string($nsclient::package_name)
 
-  $source = "${nsclient::package_source_location}/${nsclient::package_version}"
+  $source = "${nsclient::package_source_location}/${nsclient::package_name}"
 
   case $::osfamily {
     'Windows': {
-      package { $nsclient::package_version:
+      package { $nsclient::package_name:
         ensure   => installed,
         source   => $source,
         provider => 'msi'

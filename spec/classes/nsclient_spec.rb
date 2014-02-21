@@ -7,7 +7,7 @@ describe 'nsclient', :type => :class do
   } }
   let(:params) {{
       :package_source_location => 'http://files.nsclient.org/stable',
-      :package_version         => 'NSCP-0.4.1.101-x64.msi'
+      :package_name            => 'NSCP-0.4.1.101-x64.msi'
   }}
 
   it { should contain_class('nsclient::install').that_comes_before('nsclient::service') }
@@ -25,7 +25,7 @@ describe 'nsclient', :type => :class do
 
   context 'installing a custom version' do
 
-    let(:params) { {'package_version' => 'NSCP-Custom-build.msi', 'package_source_location' => 'http://myproxy.com:8080' } }
+    let(:params) { {'package_name' => 'NSCP-Custom-build.msi', 'package_source_location' => 'http://myproxy.com:8080' } }
 
     it { should contain_package('NSCP-Custom-build.msi')
                     .with_ensure('installed')

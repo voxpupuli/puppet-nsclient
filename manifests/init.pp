@@ -18,20 +18,20 @@
 # [*package_source_location*]
 #   This is the default site to download your package from (e.g. http://files.nsclient.org/stable)
 #
-# [*package_version*]
-#   This is version of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
+# [*package_name*]
+#   This is name of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
 
 class nsclient (
   $allowed_hosts           = $nsclient::params::allowed_hosts,
   $service_state           = $nsclient::params::service_state,
   $service_enable          = $nsclient::params::service_enable,
   $package_source_location = $nsclient::params::package_source_location,
-  $package_version         = $nsclient::params::package_version
+  $package_name            = $nsclient::params::package_name
 ) inherits nsclient::params {
 
   validate_re($::osfamily, '^(Windows)$', 'This module only works on Windows based systems.')
   validate_string($package_source_location)
-  validate_string($package_version)
+  validate_string($package_name)
 
   class {'nsclient::install':} ->
   class {'nsclient::service':} ->
