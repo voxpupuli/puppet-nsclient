@@ -31,7 +31,12 @@ In order for our hosts to communicate back to Nagios / Icinga servers, we need t
 
 ```puppet
 class { 'nsclient':
-  allowed_hosts => ['http://myhost.com'],
+  allowed_hosts => ['172.16.0.3'],
 }
 ```
 
+```puppet
+class { 'nsclient':
+  allowed_hosts => ['10.21.0.0/22','10.21.4.0/22'],
+}
+```
