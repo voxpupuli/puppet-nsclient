@@ -11,10 +11,22 @@ class nsclient::install {
 
   case downcase($::osfamily) {
     'windows': {
+
+      file { $nsclient::download_destination:
+        ensure => directory,
+      }
+
+      download_file { 'NSCP-Installer':
+        url                   => $source,
+        destination_directory => $nsclient::download_destination,
+        require               => File[$nsclient::download_destination]
+      }
+
       package { $nsclient::package_name:
         ensure   => installed,
-        source   => $source,
-        provider => 'msi'
+        source   => "${nsclient::download_destination}\\${nsclient::package_name}",
+        provider => 'windows',
+        require  => Download_file['NSCP-Installer']
       }
     }
     default: {

@@ -7,7 +7,8 @@ describe 'nsclient', :type => :class do
   } }
   let(:params) {{
       :package_source_location => 'http://files.nsclient.org/stable',
-      :package_name            => 'NSCP-0.4.1.101-x64.msi'
+      :package_name            => 'NSCP-0.4.1.101-x64.msi',
+      :download_destination    => 'c:\\temp'
   }}
 
   it { should contain_class('nsclient::install').that_comes_before('nsclient::service') }
@@ -15,21 +16,30 @@ describe 'nsclient', :type => :class do
 
   context 'using params defaults' do
     it { should contain_class('nsclient') }
+    it { should contain_download_file('NSCP-Installer')
+                            .with_url('http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi')
+                            .with_destination_directory('c:\temp')
+    }
     it { should contain_package('NSCP-0.4.1.101-x64.msi')
                           .with_ensure('installed')
-                          .with_source('http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi')
+                          .with_provider('windows')
+                          .with_source('c:\temp\NSCP-0.4.1.101-x64.msi')
+                          .that_requires('Download_file[NSCP-Installer]')
         }
     it { should contain_service('nscp').with_ensure('running') }
-
+#
   end
 
   context 'installing a custom version' do
 
-    let(:params) { {'package_name' => 'NSCP-Custom-build.msi', 'package_source_location' => 'http://myproxy.com:8080' } }
+    let(:params) { {'package_name' => 'NSCP-Custom-build.msi',
+                    'package_source_location' => 'http://myproxy.com:8080'} }
 
     it { should contain_package('NSCP-Custom-build.msi')
                     .with_ensure('installed')
-                    .with_source('http://myproxy.com:8080/NSCP-Custom-build.msi')
+                    .with_provider('windows')
+                    .with_source('c:\temp\NSCP-Custom-build.msi')
+                    .that_requires('Download_file[NSCP-Installer]')
     }
 
   end
@@ -42,7 +52,7 @@ describe 'nsclient', :type => :class do
       }.to raise_error(Puppet::Error, /^This module only works on Windows based systems./)
     end
   end
-
+  
   context 'with service_state set to stopped' do
     let(:params) { {'service_state' => 'stopped'} }
 

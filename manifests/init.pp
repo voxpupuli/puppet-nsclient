@@ -20,13 +20,19 @@
 #
 # [*package_name*]
 #   This is name of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
+#
+# [*download_destination*]
+#   This is the folder to where we need to download the NSCP Installer. Package cannot take a remote file source
+#   Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
+#   recursively check the file path.
 
 class nsclient (
   $allowed_hosts           = $nsclient::params::allowed_hosts,
   $service_state           = $nsclient::params::service_state,
   $service_enable          = $nsclient::params::service_enable,
   $package_source_location = $nsclient::params::package_source_location,
-  $package_name            = $nsclient::params::package_name
+  $package_name            = $nsclient::params::package_name,
+  $download_destination    = $nsclient::params::download_destination
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
