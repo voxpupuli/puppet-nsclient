@@ -9,7 +9,7 @@ class nsclient::service(
 ) {
 
   case downcase($::osfamily) {
-    'Windows': {
+    'windows': {
       file { 'C:\Program Files\NSClient++\nsclient.ini':
         ensure  => file,
         owner   => 'SYSTEM',
