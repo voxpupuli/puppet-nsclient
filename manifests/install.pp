@@ -10,8 +10,8 @@ class nsclient::install {
 
   $source = "${nsclient::package_source_location}/${nsclient::package_name}"
 
-  case $::osfamily {
-    'Windows': {
+  case downcase($::osfamily) {
+    'windows': {
       package { $nsclient::package_name:
         ensure   => installed,
         source   => $source,

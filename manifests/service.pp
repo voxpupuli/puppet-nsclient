@@ -8,7 +8,7 @@ class nsclient::service(
   $allowed_hosts  = $nsclient::allowed_hosts
 ) {
 
-  case $::osfamily {
+  case downcase($::osfamily) {
     'Windows': {
       file { 'C:\Program Files\NSClient++\nsclient.ini':
         ensure  => file,
