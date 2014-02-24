@@ -4,7 +4,6 @@
 
 class nsclient::install {
 
-  validate_re($::osfamily, '^(Windows)$', 'This module can only work on Windows Systems.')
   validate_string($nsclient::package_source_location)
   validate_string($nsclient::package_name)
 
@@ -19,7 +18,7 @@ class nsclient::install {
       }
     }
     default: {
-      fail('NSClient needs a Windows based system.')
+      fail('This module only works on Windows based systems.')
     }
   }
 }

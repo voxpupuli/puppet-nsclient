@@ -25,7 +25,7 @@ class nsclient::service(
       }
     }
     default: {
-      fail('NSClient needs a Windows based system.')
+      fail('This module only works on Windows based systems.')
     }
   }
 }

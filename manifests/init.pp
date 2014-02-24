@@ -29,7 +29,6 @@ class nsclient (
   $package_name            = $nsclient::params::package_name
 ) inherits nsclient::params {
 
-  validate_re($::osfamily, '^(Windows)$', 'This module only works on Windows based systems.')
   validate_string($package_source_location)
   validate_string($package_name)
 

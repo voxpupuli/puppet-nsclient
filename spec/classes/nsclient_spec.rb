@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'nsclient', :type => :class do
 
   let(:facts) { {
-      :osfamily  => 'windows'
+      :osfamily  => 'Windows'
   } }
   let(:params) {{
       :package_source_location => 'http://files.nsclient.org/stable',
