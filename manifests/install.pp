@@ -12,8 +12,10 @@ class nsclient::install {
   case downcase($::osfamily) {
     'windows': {
 
-      file { $nsclient::download_destination:
-        ensure => directory,
+      if ! defined(File[$nsclient::download_destination]) {
+        file { $nsclient::download_destination:
+          ensure => directory,
+        }
       }
 
       download_file { 'NSCP-Installer':

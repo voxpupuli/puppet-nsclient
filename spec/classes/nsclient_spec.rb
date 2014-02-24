@@ -52,7 +52,7 @@ describe 'nsclient', :type => :class do
       }.to raise_error(Puppet::Error, /^This module only works on Windows based systems./)
     end
   end
-  
+
   context 'with service_state set to stopped' do
     let(:params) { {'service_state' => 'stopped'} }
 
