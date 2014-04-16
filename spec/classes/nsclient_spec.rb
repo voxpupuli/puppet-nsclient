@@ -32,10 +32,11 @@ describe 'nsclient', :type => :class do
 
   context 'installing a custom version' do
 
-    let(:params) { {'package_name' => 'NSCP-Custom-build.msi',
+    let(:params) { {'package_source' => 'NSCP-Custom-build.msi',
+                    'package_name' => 'NSClient++ (x64)',
                     'package_source_location' => 'http://myproxy.com:8080'} }
 
-    it { should contain_package('NSCP-Custom-build.msi')
+    it { should contain_package('NSClient++ (x64)')
                     .with_ensure('installed')
                     .with_provider('windows')
                     .with_source('c:\temp\NSCP-Custom-build.msi')

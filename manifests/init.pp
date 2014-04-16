@@ -31,11 +31,13 @@ class nsclient (
   $service_state           = $nsclient::params::service_state,
   $service_enable          = $nsclient::params::service_enable,
   $package_source_location = $nsclient::params::package_source_location,
+  $package_source          = $nsclient::params::package_source,
   $package_name            = $nsclient::params::package_name,
   $download_destination    = $nsclient::params::download_destination
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
+  validate_string($package_source)
   validate_string($package_name)
 
   class {'nsclient::install':} ->
