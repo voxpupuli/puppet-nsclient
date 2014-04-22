@@ -18,7 +18,7 @@ Unless specified, this will install the latest stable build (0.4.1.101) of the n
 ```puppet
 class { 'nsclient':
   package_source_location => 'http://myhost.com',
-  package_name 			  => 'NSClient++ (Win32)'
+  package_name            => 'NSClient++ (Win32)'
   package_source          => '0.3.1.msi'
 }
 ```
