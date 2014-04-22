@@ -1,5 +1,5 @@
 name 'opentable/nsclient'
-version '2.0.0'
+version '1.0.0'
 author 'opentable'
 license 'MIT'
 summary 'Module that will install the NSClient on windows servers to be able to interact with Nagios and Icinga. It will also manage the list of hosts that the server can communicate with'
