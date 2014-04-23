@@ -25,7 +25,10 @@
 #   This is the folder to where we need to download the NSCP Installer. Package cannot take a remote file source
 #   Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
 #   recursively check the file path.
-
+#
+# [*config_template*]
+#   This is the template to use as the config file.
+#
 class nsclient (
   $allowed_hosts           = $nsclient::params::allowed_hosts,
   $service_state           = $nsclient::params::service_state,
@@ -33,12 +36,14 @@ class nsclient (
   $package_source_location = $nsclient::params::package_source_location,
   $package_source          = $nsclient::params::package_source,
   $package_name            = $nsclient::params::package_name,
-  $download_destination    = $nsclient::params::download_destination
+  $download_destination    = $nsclient::params::download_destination,
+  $config_template         = $nsclient::params::config_template
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
   validate_string($package_source)
   validate_string($package_name)
+  validate_string($config_template)
 
   class {'nsclient::install':} ->
   class {'nsclient::service':} ->

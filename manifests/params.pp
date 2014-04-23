@@ -10,4 +10,5 @@ class nsclient::params {
   $package_name            = 'NSClient++ (x64)'
   $package_source          = 'NSCP-0.4.1.101-x64.msi'
   $download_destination    = "c:\\temp"
+  $config_template         = 'nsclient/nsclient.ini.erb'
 }
