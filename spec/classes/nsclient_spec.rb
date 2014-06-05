@@ -16,32 +16,34 @@ describe 'nsclient', :type => :class do
 
   context 'using params defaults' do
     it { should contain_class('nsclient') }
-    it { should contain_download_file('NSCP-Installer')
-                            .with_url('http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi')
-                            .with_destination_directory('c:\temp')
-    }
-    it { should contain_package('NSCP-0.4.1.101-x64.msi')
-                          .with_ensure('installed')
-                          .with_provider('windows')
-                          .with_source('c:\temp\NSCP-0.4.1.101-x64.msi')
-                          .that_requires('Download_file[NSCP-Installer]')
-        }
+    it { should contain_download_file('NSCP-Installer').with(
+      'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
+      'destination_directory' => 'c:\temp'
+    )}
+    it { should contain_package('NSCP-0.4.1.101-x64.msi').with(
+      'ensure'   => 'installed',
+      'provider' => 'windows',
+      'source'   => 'c:\temp\NSCP-0.4.1.101-x64.msi',
+      'require'  => 'Download_file[NSCP-Installer]'
+    )}
     it { should contain_service('nscp').with_ensure('running') }
 #
   end
 
   context 'installing a custom version' do
 
-    let(:params) { {'package_source' => 'NSCP-Custom-build.msi',
-                    'package_name' => 'NSClient++ (x64)',
-                    'package_source_location' => 'http://myproxy.com:8080'} }
+    let(:params) {{
+      :package_source           => 'NSCP-Custom-build.msi',
+      :package_name             => 'NSClient++ (x64)',
+      :package_source_location  => 'http://myproxy.com:8080'
+    }}
 
-    it { should contain_package('NSClient++ (x64)')
-                    .with_ensure('installed')
-                    .with_provider('windows')
-                    .with_source('c:\temp\NSCP-Custom-build.msi')
-                    .that_requires('Download_file[NSCP-Installer]')
-    }
+    it { should contain_package('NSClient++ (x64)').with(
+      'ensure'   => 'installed',
+      'provider' => 'windows',
+      'source'   => 'c:\temp\NSCP-Custom-build.msi',
+      'require'  => 'Download_file[NSCP-Installer]'
+    )}
 
   end
 
