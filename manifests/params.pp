@@ -1,7 +1,12 @@
-# == Class: nscient::paramrs
-#
-# Defaut parameter values for the nsclient module
+# Author::    Paul Stack  (mailto:pstack@opentable.com)
+# Copyright:: Copyright (c) 2013 OpenTable Inc
+# License::   MIT
 
+# == Class nsclient::params
+#
+# This class is meant to be called from nsclient
+# It sets variables according to platform
+#
 class nsclient::params {
   $allowed_hosts           = []
   $service_state           = 'running'

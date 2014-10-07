@@ -1,33 +1,43 @@
+# Author::    Paul Stack  (mailto:pstack@opentable.com)
+# Copyright:: Copyright (c) 2013 OpenTable Inc
+# License::   MIT
+
 # == Class: nsclient
 #
 # Module to install NSClient on Windows.
 #
+# === Requirements/Dependencies
+#
+# Currently reequires the puppetlabs/stdlib module on the Puppet Forge in
+# order to validate much of the the provided configuration.
+#
 # === Parameters
 #
 # [*allowed_hosts*]
-#   Array of hosts that your client can communicate with. You can use netmasks (/ syntax) or * to create ranges.
+# Array of hosts that your client can communicate with. You can use netmasks (/ syntax) or * to create ranges.
 #
 # [*service_state*]
-#   Whether you want to nsclient service to start up
-#   Defaults to running
+# Whether you want to nsclient service to start up. Defaults to running
 #
 # [*service_enable*]
-#   Whether you want to nsclient service to start up at boot
-#   Defaults to true
+# Whether you want to nsclient service to start up at boot. Defaults to true
 #
 # [*package_source_location*]
-#   This is the default site to download your package from (e.g. http://files.nsclient.org/stable)
+# This is the default site to download your package from (e.g. http://files.nsclient.org/stable)
+#
+# [*package_source*]
+# This is the source name of the package to be downloaded
 #
 # [*package_name*]
-#   This is name of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
+# This is name of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
 #
 # [*download_destination*]
-#   This is the folder to where we need to download the NSCP Installer. Package cannot take a remote file source
-#   Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
-#   recursively check the file path.
+# This is the folder to where we need to download the NSCP Installer. Package cannot take a remote file source
+# Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
+# recursively check the file path.
 #
 # [*config_template*]
-#   This is the template to use as the config file.
+# This is the template to use as the config file.
 #
 class nsclient (
   $allowed_hosts           = $nsclient::params::allowed_hosts,

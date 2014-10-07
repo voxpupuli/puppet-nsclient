@@ -1,7 +1,12 @@
+# Author::    Paul Stack  (mailto:pstack@opentable.com)
+# Copyright:: Copyright (c) 2013 OpenTable Inc
+# License::   MIT
+
 # == Class: nsclient::install
 #
-# Class to install the nsclient msi
-
+# This private class is meant to be called from `nsclient`.
+# It downloads the package and installs it.
+#
 class nsclient::install {
 
   validate_string($nsclient::package_source_location)

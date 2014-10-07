@@ -1,0 +1,35 @@
+{
+  "name":         "opentable-nsclient",
+  "version":      "1.1.0",
+  "author":       "opentable",
+  "license":      "MIT",
+  "summary":      "Module that will install the NSClient on windows servers to be able to interact with Nagios and Icinga. It will also manage the list of hosts that the server can communicate with",
+  "source":       "https://github.com/opentable/puppet-nsclient",
+  "project_page": "https://github.com/opentable/puppet-nsclient",
+  "issues_url": "https://github.com/opentable/puppet-nsclient/issues",
+  "operatingsystem_support": [
+      {
+        "operatingsystem": "RedHat",
+        "operatingsystemrelease": ["5.0","6.0"]
+      },
+      { "operatingsystem": "CentOS",
+        "operatingsystemrelease": ["5.0","6.0"]
+      },
+      { "operatingsystem": "Debian",
+        "operatingsystemrelease": ["6.0","7.0"]
+      },
+      { "operatingsystem": "Ubuntu",
+        "operatingsystemrelease": ["12.04","14.04"]
+      }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 3.0.0 <5.0.0"
+    },
+    {
+      "name": "opentable/downloadfile",
+      "version_requirement": ">= 0.0.2 <1.0.0"
+    }
+  ]
+}

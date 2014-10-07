@@ -1,7 +1,12 @@
+# Author::    Paul Stack  (mailto:pstack@opentable.com)
+# Copyright:: Copyright (c) 2013 OpenTable Inc
+# License::   MIT
+
 # == Class: nsclient::service
 #
-# Class to manage the nsclient service
-
+# This private class is meant to be called from `nsclient`.
+# It manages the nsclient service
+#
 class nsclient::service(
   $service_state   = $nsclient::service_state,
   $service_enable  = $nsclient::service_enable,
