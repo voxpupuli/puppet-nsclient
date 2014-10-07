@@ -108,10 +108,7 @@ This is the template to use as the config file.
 
 This module is tested on the following platforms:
 
-* CentOS 5
-* CentOS 6
-* Ubuntu 12.04
-* Ubuntu 14.04
+* Windows 2008 R2
 
 It is tested with the OSS version of Puppet only.
 

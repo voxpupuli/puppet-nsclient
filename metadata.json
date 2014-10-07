@@ -8,19 +8,10 @@
   "project_page": "https://github.com/opentable/puppet-nsclient",
   "issues_url": "https://github.com/opentable/puppet-nsclient/issues",
   "operatingsystem_support": [
-      {
-        "operatingsystem": "RedHat",
-        "operatingsystemrelease": ["5.0","6.0"]
-      },
-      { "operatingsystem": "CentOS",
-        "operatingsystemrelease": ["5.0","6.0"]
-      },
-      { "operatingsystem": "Debian",
-        "operatingsystemrelease": ["6.0","7.0"]
-      },
-      { "operatingsystem": "Ubuntu",
-        "operatingsystemrelease": ["12.04","14.04"]
-      }
+    {
+      "operatingsystem": "windows",
+      "operatingsystemrelease": ["6.1.7600","6.1.7601", "6.2.9200", "6.3.9200", "6.3.9600"]
+    }
   ],
   "dependencies": [
     {
