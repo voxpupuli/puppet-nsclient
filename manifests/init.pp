@@ -39,6 +39,22 @@
 # [*config_template*]
 # This is the template to use as the config file.
 #
+# === Examples
+#
+# To install a different version:
+#
+#   class { 'nsclient':
+#     package_source_location => 'http://myhost.com',
+#     package_name            => 'NSClient++ (Win32)'
+#     package_source          => '0.3.1.msi'
+#   }
+#
+# In order to configure the nagios hosts to communicate with:
+#
+#   class { 'nsclient':
+#     allowed_hosts => ['10.21.0.0/22','10.21.4.0/22'],
+#   }
+#
 class nsclient (
   $allowed_hosts           = $nsclient::params::allowed_hosts,
   $service_state           = $nsclient::params::service_state,
