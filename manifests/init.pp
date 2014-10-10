@@ -55,6 +55,8 @@
 #     allowed_hosts => ['10.21.0.0/22','10.21.4.0/22'],
 #   }
 #
+# [*config_template_values*]
+#   Hash used to populate arbitrary variables throughout the configuration template
 class nsclient (
   $allowed_hosts           = $nsclient::params::allowed_hosts,
   $service_state           = $nsclient::params::service_state,
@@ -63,13 +65,15 @@ class nsclient (
   $package_source          = $nsclient::params::package_source,
   $package_name            = $nsclient::params::package_name,
   $download_destination    = $nsclient::params::download_destination,
-  $config_template         = $nsclient::params::config_template
+  $config_template         = $nsclient::params::config_template,
+  $config_template_values  = $nsclient::params::config_template_values
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
   validate_string($package_source)
   validate_string($package_name)
   validate_string($config_template)
+  validate_hash($config_template_values)
 
   class {'nsclient::install':} ->
   class {'nsclient::service':} ->
