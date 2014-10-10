@@ -3,6 +3,12 @@
 
   Bringing module up to higher quality standard with documentation and tests
 
+####Features
+
+- Switching default download to https
+- Improving documentation
+- Improving tests
+
 ##2014-04-25 - Release 1.1.0
 ###Summary
 
