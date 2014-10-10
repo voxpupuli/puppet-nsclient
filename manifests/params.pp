@@ -4,7 +4,7 @@
 
 # == Class nsclient::params
 #
-# This class is meant to be called from nsclient
+# This privaye class is meant to be called from `nsclient`
 # It sets variables according to platform
 #
 class nsclient::params {

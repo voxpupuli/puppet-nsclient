@@ -97,7 +97,7 @@ This is the template to use as the config file.
 
 ###Classes
 ####Public Classes
-* [`nsclient`](#class-nsclient-broker): Guides the basic installation of the nsclient application
+* [`nsclient`](#class-nsclient): Guides the basic installation of the nsclient application
 
 ####Private Classes
 * [`nsclient::config`]  Manages all the default configuration of the nsclient application
