@@ -1,7 +1,12 @@
+##2014-10-10 - Release 1.2.0
+###Summary
+
+  Bringing module up to higher quality standard with documentation and tests
+
 ##2014-04-25 - Release 1.1.0
 ###Summary
 
-  Adding support for custom configurations. Bringing module up to higher quality standard with documentation and tests
+  Adding support for custom configurations.
 
 ####Features
  - Adding param `config_template` to allow you to specify custom templates
