@@ -1,3 +1,8 @@
+##2014-10-13 - Release 1.2.1
+###Summary
+
+  Fixing broken dowload_file dependency
+
 ##2014-10-10 - Release 1.2.0
 ###Summary
 
