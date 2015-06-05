@@ -7,8 +7,9 @@ describe 'nsclient', :type => :class do
   } }
   let(:params) {{
       :package_source_location => 'http://files.nsclient.org/stable',
-      :package_name            => 'NSCP-0.4.1.101-x64.msi',
-      :download_destination    => 'c:\\temp'
+      :package_source          => 'NSCP-0.4.1.101-x64.msi',
+      :download_destination    => 'c:\temp',
+      :package_name            => 'NSClient++ (x64)'
   }}
 
   it { should contain_class('nsclient::install').that_comes_before('nsclient::service') }
@@ -20,14 +21,13 @@ describe 'nsclient', :type => :class do
       'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
       'destination_directory' => 'c:\temp'
     )}
-    it { should contain_package('NSCP-0.4.1.101-x64.msi').with(
+    it { should contain_package('NSClient++ (x64)').with(
       'ensure'   => 'installed',
       'provider' => 'windows',
       'source'   => 'c:\temp\NSCP-0.4.1.101-x64.msi',
       'require'  => 'Download_file[NSCP-Installer]'
     )}
     it { should contain_service('nscp').with_ensure('running') }
-#
   end
 
   context 'installing a custom version' do
@@ -52,7 +52,7 @@ describe 'nsclient', :type => :class do
     it do
       expect {
         should contain_class('nsclient')
-      }.to raise_error(Puppet::Error, /^This module only works on Windows based systems./)
+      }.to raise_error(Puppet::Error, /This module only works on Windows based systems/)
     end
   end
 
@@ -86,4 +86,15 @@ describe 'nsclient', :type => :class do
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
   end
 
+  describe "resolve_nscp_package_source()" do
+    let(:scope) { PuppetlabsSpec::PuppetInternals.scope }
+
+    it "should return a filename when 'latest' is supplied" do
+      scope.function_resolve_nscp_package_source(['latest', 'x64']).should =~ /NSCP-\S+-x64\.msi/
+    end
+
+    it "should return a filename when a specific version is supplied" do
+      scope.function_resolve_nscp_package_source(['0.4.3.143', 'x64']).should == 'NSCP-0.4.3.143-x64.msi'
+    end
+  end
 end
