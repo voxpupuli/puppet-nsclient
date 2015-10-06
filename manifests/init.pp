@@ -39,6 +39,9 @@
 # [*config_template*]
 # This is the template to use as the config file.
 #
+# [*proxy_server*]
+# Optional proxy server to use for downloading files.
+#
 # === Examples
 #
 # To install a different version:
@@ -63,13 +66,18 @@ class nsclient (
   $package_source          = $nsclient::params::package_source,
   $package_name            = $nsclient::params::package_name,
   $download_destination    = $nsclient::params::download_destination,
-  $config_template         = $nsclient::params::config_template
+  $config_template         = $nsclient::params::config_template,
+  $proxy_server            = $nsclient::params::proxy_server
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
   validate_string($package_source)
   validate_string($package_name)
   validate_string($config_template)
+
+  if(!empty($proxy_server)){
+    validate_re($proxy_server, ['^(http(?:s)?\:\/\/[a-zA-Z0-9]+(?:(?:\.|\-)[a-zA-Z0-9]+)+(?:\:\d+)?(?:\/[\w\-]+)*(?:\/?|\/\w+\.[a-zA-Z]{2,4}(?:\?[\w]+\=[\w\-]+)?)?(?:\&[\w]+\=[\w\-]+)*)$'], "ERROR: You must enter a proxy url in a valid format i.e. http://proxy.net:3128")
+  }
 
   class {'nsclient::install':} ->
   class {'nsclient::service':} ->

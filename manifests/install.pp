@@ -27,7 +27,8 @@ class nsclient::install {
       download_file { 'NSCP-Installer':
         url                   => $source,
         destination_directory => $nsclient::download_destination,
-        require               => File[$nsclient::download_destination]
+        require               => File[$nsclient::download_destination],
+        proxyAddress          => $nsclient::proxy_server
       }
 
       package { $nsclient::package_name:

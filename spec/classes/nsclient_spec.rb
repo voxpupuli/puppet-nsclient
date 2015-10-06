@@ -30,6 +30,16 @@ describe 'nsclient', :type => :class do
 #
   end
 
+  context 'using proxy server' do
+    let(:params) {{
+        :proxy_server => 'http://myproxyserver.net:3128',
+    }}
+    it { should contain_download_file('NSCP-Installer').with(
+      'proxyaddress'          => 'http://myproxyserver.net:3128'
+    )}
+#
+  end
+
   context 'installing a custom version' do
 
     let(:params) {{
@@ -46,6 +56,7 @@ describe 'nsclient', :type => :class do
     )}
 
   end
+
 
   context 'when trying to install on Ubuntu' do
     let(:facts) { {:osfamily => 'Ubuntu'} }
@@ -84,6 +95,14 @@ describe 'nsclient', :type => :class do
     let(:params) {{ 'allowed_hosts' => ['10.21.0.0/22','10.21.4.0/22'], 'service_state' => 'running', 'service_enable' => 'true' }}
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
+  end
+
+  context 'when passing an incorrect proxy server url should fail' do
+    let(:params) {{
+        :proxy_server => 'htt://proxyserver.net:3128'
+    }}
+
+    it { should compile.and_raise_error(/ERROR: You must enter a proxy url in a valid format i\.e\. http:\/\/proxy\.net:3128/) }
   end
 
 end
