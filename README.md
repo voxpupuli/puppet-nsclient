@@ -93,6 +93,9 @@ recursively check the file path.
 #####`config_template`
 This is the template to use as the config file.
 
+#####`proxy_server`
+Optional proxy server to use for downloading files
+
 ##Reference
 
 ###Classes
