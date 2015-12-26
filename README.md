@@ -17,7 +17,7 @@
 
 This is a module that will manage and install the NSClient on Windows servers from the official NSClient site.
 
-[![Build Status](https://travis-ci.org/opentable/puppet-nsclient.png?branch=master)](https://travis-ci.org/opentable/puppet-nsclient)
+[![Build Status](https://travis-ci.org/puppet-community/puppet-nsclient.png?branch=master)](https://travis-ci.org/puppet-community/puppet-nsclient)
 
 
 ##Module Description

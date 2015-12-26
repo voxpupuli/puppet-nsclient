@@ -52,7 +52,7 @@ describe 'nsclient', :type => :class do
     it do
       expect {
         should contain_class('nsclient')
-      }.to raise_error(Puppet::Error, /^This module only works on Windows based systems./)
+      }.to raise_error(Puppet::Error, /This module only works on Windows based systems./)
     end
   end
 
