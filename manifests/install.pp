@@ -12,6 +12,7 @@ class nsclient::install {
   validate_string($nsclient::package_source_location)
   validate_string($nsclient::package_source)
   validate_string($nsclient::package_name)
+  validate_string($nsclient::install_path)
 
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
@@ -31,10 +32,11 @@ class nsclient::install {
       }
 
       package { $nsclient::package_name:
-        ensure   => installed,
-        source   => "${nsclient::download_destination}\\${nsclient::package_source}",
-        provider => 'windows',
-        require  => Download_file['NSCP-Installer']
+        ensure          => installed,
+        source          => "${nsclient::download_destination}\\${nsclient::package_source}",
+        provider        => 'windows',
+        install_options => ["INSTALLLOCATION=${nsclient::install_path}", "CONFIGURATION_TYPE=ini://${nsclient::install_path}\\nsclient.ini", '/quiet'],
+        require         => Download_file['NSCP-Installer']
       }
     }
     default: {
