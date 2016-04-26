@@ -8,7 +8,7 @@ describe 'nsclient', :type => :class do
   let(:params) {{
       :package_source_location => 'http://files.nsclient.org/stable',
       :package_name            => 'NSCP-0.4.1.101-x64.msi',
-      :download_destination    => 'c:\\temp'
+      :download_destination    => 'c:/temp'
   }}
 
   it { should contain_class('nsclient::install').that_comes_before('nsclient::service') }
@@ -18,12 +18,12 @@ describe 'nsclient', :type => :class do
     it { should contain_class('nsclient') }
     it { should contain_download_file('NSCP-Installer').with(
       'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
-      'destination_directory' => 'c:\temp'
+      'destination_directory' => 'c:/temp'
     )}
     it { should contain_package('NSCP-0.4.1.101-x64.msi').with(
       'ensure'   => 'installed',
       'provider' => 'windows',
-      'source'   => 'c:\temp\NSCP-0.4.1.101-x64.msi',
+      'source'   => 'c:/temp/NSCP-0.4.1.101-x64.msi',
       'require'  => 'Download_file[NSCP-Installer]'
     )}
     it { should contain_service('nscp').with_ensure('running') }
@@ -41,7 +41,7 @@ describe 'nsclient', :type => :class do
     it { should contain_package('NSClient++ (x64)').with(
       'ensure'   => 'installed',
       'provider' => 'windows',
-      'source'   => 'c:\temp\NSCP-Custom-build.msi',
+      'source'   => 'c:/temp/NSCP-Custom-build.msi',
       'require'  => 'Download_file[NSCP-Installer]'
     )}
 
