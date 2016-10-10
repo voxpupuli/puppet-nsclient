@@ -11,7 +11,7 @@ hosts.each do |host|
 	
   
 	version = ENV['PUPPET_GEM_VERSION']
-	install_puppet(:version => version)
+	install_puppet(version: version)
 end
 
 Spec.configure do |c|
@@ -29,7 +29,7 @@ Spec.configure do |c|
 			
       if host['platform'] =~ %r{windows}
 				endpoint = "http://127.0.0.1:5985/wsman"
-				c.winrm = ::WinRM::WinRMWebService.new(endpoint, :ssl, :user => 'vagrant', :pass => 'vagrant', :basic_auth_only => true)
+				c.winrm = ::WinRM::WinRMWebService.new(endpoint, :ssl, user: 'vagrant', pass: 'vagrant', basic_auth_only: true)
 				c.winrm.set_timeout 300
 		  end
       
@@ -37,12 +37,12 @@ Spec.configure do |c|
 			path = (File.expand_path(File.dirname(__FILE__)+'/../')).split('/')
 			name = path[path.length-1].split('-')[1]
 
-			copy_module_to(host, :source => proj_root, :module_name => name)
+			copy_module_to(host, source: proj_root, module_name: name)
 
       
-			on host, puppet('module','install', forge_repo, "puppetlabs-stdlib"), { :acceptable_exit_codes => [0,1] }
+			on host, puppet('module','install', forge_repo, "puppetlabs-stdlib"), { acceptable_exit_codes: [0,1] }
 	    
-			on host, puppet('module','install', forge_repo, "opentable-download_file"), { :acceptable_exit_codes => [0,1] }
+			on host, puppet('module','install', forge_repo, "opentable-download_file"), { acceptable_exit_codes: [0,1] }
 	    
 	  end
   end

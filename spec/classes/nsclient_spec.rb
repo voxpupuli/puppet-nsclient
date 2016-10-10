@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe 'nsclient', :type => :class do
+describe 'nsclient', type: :class do
 
   let(:facts) { {
-      :osfamily  => 'Windows'
+      osfamily: 'Windows'
   } }
   let(:params) {{
-      :package_source_location => 'http://files.nsclient.org/stable',
-      :package_name            => 'NSCP-0.4.1.101-x64.msi',
-      :download_destination    => 'c:/temp'
+      package_source_location: 'http://files.nsclient.org/stable',
+      package_name: 'NSCP-0.4.1.101-x64.msi',
+      download_destination: 'c:/temp'
   }}
 
   context 'using params defaults' do
@@ -33,9 +33,9 @@ describe 'nsclient', :type => :class do
   context 'installing a custom version' do
 
     let(:params) {{
-      :package_source           => 'NSCP-Custom-build.msi',
-      :package_name             => 'NSClient++ (x64)',
-      :package_source_location  => 'http://myproxy.com:8080'
+      package_source: 'NSCP-Custom-build.msi',
+      package_name: 'NSClient++ (x64)',
+      package_source_location: 'http://myproxy.com:8080'
     }}
 
     it { should contain_package('NSClient++ (x64)').with(
@@ -48,7 +48,7 @@ describe 'nsclient', :type => :class do
   end
 
   context 'when trying to install on Ubuntu' do
-    let(:facts) { { :osfamily => 'Ubuntu' } }
+    let(:facts) { { osfamily: 'Ubuntu' } }
     it do
       expect {
         should contain_class('nsclient')
