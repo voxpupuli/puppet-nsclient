@@ -39,9 +39,9 @@ Spec.configure do |c|
       copy_module_to(host, source: proj_root, module_name: name)
 
 
-      on host, puppet('module','install', forge_repo, "puppetlabs-stdlib"), { acceptable_exit_codes: [0,1] }
+      on host, puppet('module', 'install', forge_repo, "puppetlabs-stdlib"), { acceptable_exit_codes: [0, 1] }
 
-      on host, puppet('module','install', forge_repo, "opentable-download_file"), { acceptable_exit_codes: [0,1] }
+      on host, puppet('module', 'install', forge_repo, "opentable-download_file"), { acceptable_exit_codes: [0, 1] }
     end
   end
 end
