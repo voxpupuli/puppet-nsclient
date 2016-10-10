@@ -74,7 +74,6 @@ class nsclient (
   validate_string($install_path)
 
   class {'::nsclient::install':} ->
-  class {'::nsclient::service':} ->
-  Class['nsclient']
+  class {'::nsclient::service':}
 
 }
