@@ -1,13 +1,11 @@
 require 'beaker-rspec/spec_helper'
 require 'beaker-rspec/helpers/serverspec'
 
-
 hosts.each do |host|
   if host['platform'] =~ %r{windows}
-     include Serverspec::Helper::Windows
-     include Serverspec::Helper::WinRM
+    include Serverspec::Helper::Windows
+    include Serverspec::Helper::WinRM
   end
-
 
   version = ENV['PUPPET_GEM_VERSION']
   install_puppet(version: version)
@@ -19,12 +17,11 @@ Spec.configure do |c|
   c.formatter = :documentation
 
   c.before :suite do
-    #The gets around a bug where windows can't validate the cert when using https
+    # The gets around a bug where windows can't validate the cert when using https
     forge_repo = '--module_repository=http://forge.puppetlabs.com'
 
     hosts.each do |host|
       c.host = host
-
 
       if host['platform'] =~ %r{windows}
         endpoint = 'http://127.0.0.1:5985/wsman'
@@ -32,16 +29,14 @@ Spec.configure do |c|
         c.winrm.set_timeout 300
       end
 
-
-      path = (File.expand_path(File.dirname(__FILE__) + '/../')).split('/')
+      path = File.expand_path(File.dirname(__FILE__) + '/../').split('/')
       name = path[path.length - 1].split('-')[1]
 
       copy_module_to(host, source: proj_root, module_name: name)
 
+      on host, puppet('module', 'install', forge_repo, 'puppetlabs-stdlib'), acceptable_exit_codes: [0, 1]
 
-      on host, puppet('module', 'install', forge_repo, 'puppetlabs-stdlib'), { acceptable_exit_codes: [0, 1] }
-
-      on host, puppet('module', 'install', forge_repo, 'opentable-download_file'), { acceptable_exit_codes: [0, 1] }
+      on host, puppet('module', 'install', forge_repo, 'opentable-download_file'), acceptable_exit_codes: [0, 1]
     end
   end
 end
