@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'nsclient', type: :class do
 
   let(:facts) { {
-      osfamily: 'Windows'
+    osfamily: 'Windows'
   } }
   let(:params) {{
-      package_source_location: 'http://files.nsclient.org/stable',
+    package_source_location: 'http://files.nsclient.org/stable',
       package_name: 'NSCP-0.4.1.101-x64.msi',
       download_destination: 'c:/temp'
   }}
