@@ -5,7 +5,7 @@ describe 'nsclient', type: :class do
   let(:facts) { {
     osfamily: 'Windows'
   } }
-  let(:params) {{
+  let(:params) { {
     package_source_location: 'http://files.nsclient.org/stable',
       package_name: 'NSCP-0.4.1.101-x64.msi',
       download_destination: 'c:/temp'
@@ -32,7 +32,7 @@ describe 'nsclient', type: :class do
 
   context 'installing a custom version' do
 
-    let(:params) {{
+    let(:params) { {
       package_source: 'NSCP-Custom-build.msi',
       package_name: 'NSClient++ (x64)',
       package_source_location: 'http://myproxy.com:8080'
@@ -75,13 +75,13 @@ describe 'nsclient', type: :class do
   end
 
   context 'when single value array of allowed hosts' do
-    let(:params) {{ 'allowed_hosts' => ['172.16.0.3'], 'service_state' => 'running', 'service_enable' => 'true' }}
+    let(:params) { { 'allowed_hosts' => ['172.16.0.3'], 'service_state' => 'running', 'service_enable' => 'true' } }
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 172\.16\.0\.3}) }
   end
 
   context 'when passing an array of allowed hosts' do
-    let(:params) {{ 'allowed_hosts' => ['10.21.0.0/22','10.21.4.0/22'], 'service_state' => 'running', 'service_enable' => 'true' }}
+    let(:params) { { 'allowed_hosts' => ['10.21.0.0/22','10.21.4.0/22'], 'service_state' => 'running', 'service_enable' => 'true' } }
 
     #it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 10.21.0.0/22,10.21.4.0/22}) }
