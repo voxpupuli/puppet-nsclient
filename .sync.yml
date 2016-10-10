@@ -1,9 +1,6 @@
 ---
-spec/spec_helper_acceptance.rb:
-  windows: true
-  dependencies:
-    - puppetlabs-stdlib
-    - opentable-download_file
+.travis.yml:
+  secure: "acTGhT7EpADLtW6Ic+pgYo7a7VuF5oe3ll3UrUeXuI2exzj04/SiU2iccHVSypMDRBXVDUPYQY057NT/GVMWnjAfcG1WGmqCPfL8fC5AxIQGgD/GqZmqard+1r0UnPCdkp36POrvs5t5TUgtkcMV4XEm4xxYnMXJxkQS8Z/HVxI="
 spec/acceptance/nodesets/centos-59-x64.yml:
   unmanaged: true
 spec/acceptance/nodesets/centos-64-x64-pe.yml:
