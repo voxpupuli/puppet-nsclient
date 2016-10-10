@@ -3,7 +3,6 @@ require 'beaker-rspec/helpers/serverspec'
 
 
 hosts.each do |host|
-
   if host['platform'] =~ %r{windows}
      include Serverspec::Helper::Windows
      include Serverspec::Helper::WinRM
@@ -43,7 +42,6 @@ Spec.configure do |c|
       on host, puppet('module','install', forge_repo, "puppetlabs-stdlib"), { acceptable_exit_codes: [0,1] }
 
       on host, puppet('module','install', forge_repo, "opentable-download_file"), { acceptable_exit_codes: [0,1] }
-
     end
   end
 end
