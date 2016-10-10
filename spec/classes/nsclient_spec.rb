@@ -11,11 +11,11 @@ describe 'nsclient', :type => :class do
       :download_destination    => 'c:/temp'
   }}
 
-  it { should contain_class('nsclient::install').that_comes_before('nsclient::service') }
-
-
   context 'using params defaults' do
     it { should contain_class('nsclient') }
+    it { should contain_class('nsclient::install').that_comes_before('Class[nsclient::service]') }
+    it { should contain_class('nsclient::service') }
+    it { should contain_class('nsclient::params') }
     it { should contain_download_file('NSCP-Installer').with(
       'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
       'destination_directory' => 'c:/temp'

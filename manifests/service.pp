@@ -22,7 +22,7 @@ class nsclient::service(
         owner   => 'SYSTEM',
         mode    => '0664',
         content => template($config_template),
-        notify  => Service['nscp']
+        notify  => Service['nscp'],
       }
 
       service { 'nscp':
