@@ -27,7 +27,7 @@ describe 'nsclient', type: :class do
       'require'  => 'Download_file[NSCP-Installer]'
     )}
     it { should contain_service('nscp').with_ensure('running') }
-#
+    #
   end
 
   context 'installing a custom version' do
