@@ -73,8 +73,8 @@ class nsclient (
   validate_string($config_template)
   validate_string($install_path)
 
-  class {'nsclient::install':} ->
-  class {'nsclient::service':} ->
+  class {'::nsclient::install':} ->
+  class {'::nsclient::service':} ->
   Class['nsclient']
 
 }
