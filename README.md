@@ -1,5 +1,12 @@
 # NSClient++ module for Puppet
 
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-nsclient.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-nsclient)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-nsclient/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-nsclient)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -16,8 +23,6 @@
 
 This is a module that will manage and install the NSClient on Windows servers
 from the official NSClient site.
-
-[![Build Status](https://travis-ci.org/puppet-community/puppet-nsclient.png?branch=master)](https://travis-ci.org/puppet-community/puppet-nsclient)
 
 ## Module Description
 
