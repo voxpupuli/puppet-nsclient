@@ -15,25 +15,25 @@ describe 'nsclient', type: :class do
   end
 
   context 'using params defaults' do
-    it { should contain_class('nsclient') }
-    it { should contain_class('nsclient::install').that_comes_before('Class[nsclient::service]') }
-    it { should contain_class('nsclient::service') }
-    it { should contain_class('nsclient::params') }
+    it { is_expected.to contain_class('nsclient') }
+    it { is_expected.to contain_class('nsclient::install').that_comes_before('Class[nsclient::service]') }
+    it { is_expected.to contain_class('nsclient::service') }
+    it { is_expected.to contain_class('nsclient::params') }
     it do
-      should contain_download_file('NSCP-Installer').with(
+      is_expected.to contain_download_file('NSCP-Installer').with(
         'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
         'destination_directory' => 'c:/temp'
       )
     end
     it do
-      should contain_package('NSCP-0.4.1.101-x64.msi').with(
+      is_expected.to contain_package('NSCP-0.4.1.101-x64.msi').with(
         'ensure'   => 'installed',
         'provider' => 'windows',
         'source'   => 'c:/temp/NSCP-0.4.1.101-x64.msi',
         'require'  => 'Download_file[NSCP-Installer]'
       )
     end
-    it { should contain_service('nscp').with_ensure('running') }
+    it { is_expected.to contain_service('nscp').with_ensure('running') }
     #
   end
 
@@ -47,7 +47,7 @@ describe 'nsclient', type: :class do
     end
 
     it do
-      should contain_package('NSClient++ (x64)').with(
+      is_expected.to contain_package('NSClient++ (x64)').with(
         'ensure'   => 'installed',
         'provider' => 'windows',
         'source'   => 'c:/temp/NSCP-Custom-build.msi',
@@ -60,7 +60,7 @@ describe 'nsclient', type: :class do
     let(:facts) { { osfamily: 'Ubuntu' } }
     it do
       expect do
-        should contain_class('nsclient')
+        is_expected.to contain_class('nsclient')
       end.to raise_error(Puppet::Error, %r{This module only works on Windows based systems.})
     end
   end
@@ -68,31 +68,31 @@ describe 'nsclient', type: :class do
   context 'with service_state set to stopped' do
     let(:params) { { 'service_state' => 'stopped' } }
 
-    it { should contain_service('nscp').with_ensure('stopped') }
+    it { is_expected.to contain_service('nscp').with_ensure('stopped') }
   end
 
   context 'with service_enable set to false' do
     let(:params) { { 'service_enable' => 'false' } }
 
-    it { should contain_service('nscp').with_enable('false') }
+    it { is_expected.to contain_service('nscp').with_enable('false') }
   end
 
   context 'with service_enable set to true' do
     let(:params) { { 'service_enable' => 'true' } }
 
-    it { should contain_service('nscp').with_enable('true') }
+    it { is_expected.to contain_service('nscp').with_enable('true') }
   end
 
   context 'when single value array of allowed hosts' do
     let(:params) { { 'allowed_hosts' => ['172.16.0.3'], 'service_state' => 'running', 'service_enable' => 'true' } }
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 172\.16\.0\.3}) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 172\.16\.0\.3}) }
   end
 
   context 'when passing an array of allowed hosts' do
     let(:params) { { 'allowed_hosts' => ['10.21.0.0/22', '10.21.4.0/22'], 'service_state' => 'running', 'service_enable' => 'true' } }
 
     # it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 10.21.0.0/22,10.21.4.0/22}) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 10.21.0.0/22,10.21.4.0/22}) }
   end
 end
