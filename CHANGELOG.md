@@ -1,3 +1,14 @@
+# Changelog
+
+## 2017-02-11 - Release 1.4.0
+
+This is the last release with Puppet3 support
+* rubocop: fix RSpec/ImplicitExpect
+* Set min version_requirement for Puppet + deps
+* Fix tests for future parser
+* Add parameter to change installation directory
+* Default download_destination to use forward slashes
+
 ##2014-10-13 - Release 1.3.0
 ###Summary
 
