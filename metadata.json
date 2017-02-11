@@ -1,17 +1,27 @@
 {
-  "name":         "puppet-nsclient",
-  "version":      "1.4.0",
-  "author":       "Vox Pupuli",
-  "license":      "MIT",
-  "summary":      "Installs the NSClient on windows servers to be able to interact with Nagios and Icinga",
-  "source":       "https://github.com/voxpupuli/puppet-nsclient",
+  "name": "puppet-nsclient",
+  "version": "1.4.1-rc0",
+  "author": "Vox Pupuli",
+  "license": "MIT",
+  "summary": "Installs the NSClient on windows servers to be able to interact with Nagios and Icinga",
+  "source": "https://github.com/voxpupuli/puppet-nsclient",
   "project_page": "https://github.com/voxpupuli/puppet-nsclient",
-  "issues_url":   "https://github.com/voxpupuli/puppet-nsclient/issues",
-  "tags": ["windows","nagios","nsclient", "monitoring"],
+  "issues_url": "https://github.com/voxpupuli/puppet-nsclient/issues",
+  "tags": [
+    "windows",
+    "nagios",
+    "nsclient",
+    "monitoring"
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "windows",
-      "operatingsystemrelease": ["2008","2008 R2","2012","2012 R2"]
+      "operatingsystemrelease": [
+        "2008",
+        "2008 R2",
+        "2012",
+        "2012 R2"
+      ]
     }
   ],
   "dependencies": [
