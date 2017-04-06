@@ -35,7 +35,13 @@ class nsclient::install {
         ensure          => installed,
         source          => "${nsclient::download_destination}/${nsclient::package_source}",
         provider        => 'windows',
-        install_options => ["INSTALLLOCATION=${nsclient::install_path}", "CONFIGURATION_TYPE=ini://${nsclient::install_path}\\nsclient.ini", '/quiet'],
+        install_options => [
+          '/quiet',
+          {
+            'INSTALLLOCATION'    => $nsclient::install_path,
+            'CONFIGURATION_TYPE' => "ini://${nsclient::install_path}\\nsclient.ini"
+          },
+        ],
         require         => Download_file['NSCP-Installer'],
       }
     }
