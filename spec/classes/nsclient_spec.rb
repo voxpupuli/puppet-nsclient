@@ -58,6 +58,7 @@ describe 'nsclient', type: :class do
 
   context 'when trying to install on Ubuntu' do
     let(:facts) { { osfamily: 'Ubuntu' } }
+
     it do
       expect do
         is_expected.to contain_class('nsclient')
