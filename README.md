@@ -1,43 +1,49 @@
-# puppet-nsclient
+# NSClient++ module for Puppet
 
-####Table of Contents
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-nsclient.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-nsclient)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-nsclient/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-nsclient)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/nsclient.svg)](https://forge.puppetlabs.com/puppet/nsclient)
+
+#### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with nsclient](#setup)
+1. [Module Description - What the module does and why it is useful](#module-description)
+1. [Setup - The basics of getting started with nsclient](#setup)
     * [What nsclient affects](#what-nsclient-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with nsclient](#beginning-with-nsclient)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+1. [Usage - Configuration options and additional functionality](#usage)
+1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+1. [Limitations - OS compatibility, etc.](#limitations)
+1. [Development - Guide for contributing to the module](#development)
 
-##Overview
+## Overview
 
-This is a module that will manage and install the NSClient on Windows servers from the official NSClient site.
+This is a module that will manage and install the NSClient on Windows servers
+from the official NSClient site.
 
-[![Build Status](https://travis-ci.org/puppet-community/puppet-nsclient.png?branch=master)](https://travis-ci.org/puppet-community/puppet-nsclient)
+## Module Description
 
+Module that will install the NSClient on windows servers to be able to interact
+with Nagios and Icinga. It will also manage the list of hosts that the server can
+communicate with.
 
-##Module Description
-Module that will install the NSClient on windows servers to be able to interact with Nagios and Icinga.
-It will also manage the list of hosts that the server can communicate with.
+## Setup
 
-##Setup
-
-###What nsclient affects
+### What nsclient affects
 
 * Installs a new package
 * Creates a new windows service
 
-###Beginning with nsclient
+### Beginning with nsclient
 
-Usage
---
+## Usage
+
 To install nsclient with defaults:
 
-```puppet  
+```puppet
 include 'nsclient'
 ```
 
@@ -59,52 +65,68 @@ class { 'nsclient':
 }
 ```
 
-##Usage
+## Reference
 
-###Classes and Defined Types
+### Classes and Defined Types
 
-####Class: `nsclient`
-One of the primary classes of the nsclient module. This class will install the nsclient binaries
+#### Class: `nsclient`
+
+One of the primary classes of the nsclient module. This class will install the
+nsclient binaries
 
 **Parameters within `nsclient`:**
-#####`allowed_hosts`
-Array of hosts that your client can communicate with. You can use netmasks (/ syntax) or * to create ranges.
 
-#####`service_state`
+##### `allowed_hosts`
+
+Array of hosts that your client can communicate with. You can use netmasks
+(/ syntax) or * to create ranges.
+
+##### `service_state`
+
 Whether you want to nsclient service to start up. Defaults to running
 
-#####`service_enable`
+##### `service_enable`
+
 Whether you want to nsclient service to start up at boot. Defaults to true
 
-#####`package_source_location`
-This is the default site to download your package from (e.g. http://files.nsclient.org/stable)
+##### `package_source_location`
 
-#####`package_source`
+This is the default site to download your package from (e.g. <http://files.nsclient.org/stable>)
+
+##### `package_source`
+
 This is the source name of the package to be downloaded
 
-#####`package_name`
+##### `package_name`
+
 This is name of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
 
-#####`download_destination`
-This is the folder to where we need to download the NSCP Installer. Package cannot take a remote file source
-Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
-recursively check the file path.
+##### `download_destination`
 
-#####`config_template`
+This is the folder to where we need to download the NSCP Installer. Package
+cannot take a remote file source Because of Windows, we need to set this to be
+a top level directory (e.g. c:\\temp) or we would need to recursively check the
+file path.
+
+##### `config_template`
+
 This is the template to use as the config file.
 
-##Reference
+## Reference
 
-###Classes
-####Public Classes
+### Classes
+
+#### Public Classes
+
 * [`nsclient`](#class-nsclient): Guides the basic installation of the nsclient application
 
-####Private Classes
+#### Private Classes
+
 * [`nsclient::config`]  Manages all the default configuration of the nsclient application
 * [`nsclient::install`] Manages the installation of the nsclient
 * [`nsclient::service`] Manages the nclient service
 
-##Limitations
+## Limitations
 
 This module is tested on the following platforms:
 
@@ -112,8 +134,8 @@ This module is tested on the following platforms:
 
 It is tested with the OSS version of Puppet only.
 
-##Development
+## Development
 
-###Contributing
+### Contributing
 
 Please read CONTRIBUTING.md for full details on contributing to this project.
