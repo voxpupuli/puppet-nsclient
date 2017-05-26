@@ -8,8 +8,8 @@ describe 'nsclient', type: :class do
   end
   let(:params) do
     {
-      package_source_location: 'http://files.nsclient.org/stable',
-      package_name: 'NSCP-0.4.1.101-x64.msi',
+      package_source_location: 'https://github.com/mickem/nscp/releases/download/0.5.1.28',
+      package_name: 'NSCP-0.5.1.28-x64.msi',
       download_destination: 'c:/temp'
     }
   end
@@ -21,15 +21,15 @@ describe 'nsclient', type: :class do
     it { is_expected.to contain_class('nsclient::params') }
     it do
       is_expected.to contain_download_file('NSCP-Installer').with(
-        'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
+        'url'                   => 'https://github.com/mickem/nscp/releases/download/0.5.1.28/NSCP-0.5.1.28-x64.msi',
         'destination_directory' => 'c:/temp'
       )
     end
     it do
-      is_expected.to contain_package('NSCP-0.4.1.101-x64.msi').with(
+      is_expected.to contain_package('NSCP-0.5.1.28-x64.msi').with(
         'ensure'   => 'installed',
         'provider' => 'windows',
-        'source'   => 'c:/temp/NSCP-0.4.1.101-x64.msi',
+        'source'   => 'c:/temp/NSCP-0.5.1.28-x64.msi',
         'require'  => 'Download_file[NSCP-Installer]'
       )
     end
