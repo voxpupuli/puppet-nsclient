@@ -2,5 +2,3 @@ fixtures:
   repositories:
     stdlib: https://github.com/puppetlabs/puppetlabs-stdlib
     download_file: https://github.com/opentable/puppet-download_file
-  symlinks:
-    nsclient: "#{source_dir}"
