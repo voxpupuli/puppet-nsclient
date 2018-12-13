@@ -59,6 +59,13 @@ class { 'nsclient':
 }
 ```
 
+in order to use proxy for downloading the package
+```puppet
+class { 'nsclient':
+  proxy_url => 'http://proxy.domain.local:8080',
+}
+```
+
 ##Usage
 
 ###Classes and Defined Types
@@ -92,6 +99,9 @@ recursively check the file path.
 
 #####`config_template`
 This is the template to use as the config file.
+
+#####`proxy_url`
+Specify a proxy url if needed for downloading the package
 
 #####`password`
 Password used to authenticate against server
