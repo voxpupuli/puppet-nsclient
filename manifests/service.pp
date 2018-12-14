@@ -12,8 +12,11 @@ class nsclient::service(
   $service_enable  = $nsclient::service_enable,
   $allowed_hosts   = $nsclient::allowed_hosts,
   $config_template = $nsclient::config_template,
-  $install_path    = $nsclient::install_path
+  $install_path    = $nsclient::install_path,
+  $password        = $nsclient::password
 ) {
+
+  assert_private("You're not supposed to do that!")
 
   case downcase($::osfamily) {
     'windows': {

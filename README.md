@@ -93,6 +93,9 @@ recursively check the file path.
 #####`config_template`
 This is the template to use as the config file.
 
+#####`password`
+Password used to authenticate against server
+
 ##Reference
 
 ###Classes

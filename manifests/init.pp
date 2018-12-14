@@ -39,6 +39,9 @@
 # [*config_template*]
 # This is the template to use as the config file.
 #
+# [*password*]
+# Password used to authenticate against server
+# default to undef
 # === Examples
 #
 # To install a different version:
@@ -56,15 +59,16 @@
 #   }
 #
 class nsclient (
-  $allowed_hosts           = $nsclient::params::allowed_hosts,
-  $service_state           = $nsclient::params::service_state,
-  $service_enable          = $nsclient::params::service_enable,
-  $package_source_location = $nsclient::params::package_source_location,
-  $package_source          = $nsclient::params::package_source,
-  $package_name            = $nsclient::params::package_name,
-  $download_destination    = $nsclient::params::download_destination,
-  $config_template         = $nsclient::params::config_template,
-  $install_path            = $nsclient::params::install_path
+  $allowed_hosts                = $nsclient::params::allowed_hosts,
+  $service_state                = $nsclient::params::service_state,
+  $service_enable               = $nsclient::params::service_enable,
+  $package_source_location      = $nsclient::params::package_source_location,
+  $package_source               = $nsclient::params::package_source,
+  $package_name                 = $nsclient::params::package_name,
+  $download_destination         = $nsclient::params::download_destination,
+  $config_template              = $nsclient::params::config_template,
+  $install_path                 = $nsclient::params::install_path,
+  Optional[String[1]] $password = $nsclient::params::password
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
@@ -72,6 +76,7 @@ class nsclient (
   validate_string($package_name)
   validate_string($config_template)
   validate_string($install_path)
+
 
   class {'::nsclient::install':}
   -> class {'::nsclient::service':}

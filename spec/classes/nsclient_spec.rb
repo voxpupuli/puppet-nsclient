@@ -96,4 +96,10 @@ describe 'nsclient', type: :class do
     # it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
     it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 10.21.0.0/22,10.21.4.0/22}) }
   end
+
+  context 'when passing password variable' do
+    let(:params) { { 'password' => 'debian4ever', 'service_state' => 'running', 'service_enable' => 'true' } }
+
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{password = debian4ever}) }
+  end
 end
