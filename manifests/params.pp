@@ -17,4 +17,5 @@ class nsclient::params {
   $download_destination    = 'c:/temp'
   $config_template         = 'nsclient/nsclient.ini.erb'
   $install_path            = 'C:\Program Files\NSClient++'
+  $password                = undef
 }
