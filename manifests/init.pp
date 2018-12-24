@@ -75,19 +75,6 @@
 #   }
 #
 class nsclient (
-<<<<<<< HEAD
-  $allowed_hosts                 = $nsclient::params::allowed_hosts,
-  $service_state                 = $nsclient::params::service_state,
-  $service_enable                = $nsclient::params::service_enable,
-  $package_source_location       = $nsclient::params::package_source_location,
-  $package_source                = $nsclient::params::package_source,
-  $package_name                  = $nsclient::params::package_name,
-  $download_destination          = $nsclient::params::download_destination,
-  $config_template               = $nsclient::params::config_template,
-  $install_path                  = $nsclient::params::install_path,
-  Optional[String[1]] $proxy_url = $nsclient::params::proxy_url,
-  Optional[String[1]] $password  = $nsclient::params::password
-=======
   $allowed_hosts                                  = $nsclient::params::allowed_hosts,
   $service_state                                  = $nsclient::params::service_state,
   $service_enable                                 = $nsclient::params::service_enable,
@@ -98,10 +85,10 @@ class nsclient (
   $config_template                                = $nsclient::params::config_template,
   $install_path                                   = $nsclient::params::install_path,
   Optional[String[1]] $password                   = $nsclient::params::password,
-  Boolean $chocolatey_provider                    =  $nsclient::params::chocolatey_provider,
-  Optional[String[1]] $chocolatey_package_name    =  $nsclient::params::chocolatey_package_name,
+  Optional[String[1]] $proxy_url                  = $nsclient::params::proxy_url,
+  Boolean $chocolatey_provider                    = $nsclient::params::chocolatey_provider,
+  Optional[String[1]] $chocolatey_package_name    = $nsclient::params::chocolatey_package_name,
   Optional[String[1]] $chocolatey_package_version = $nsclient::params::chocolatey_package_version
->>>>>>> Add chocolatey as a provider for installing the package
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
