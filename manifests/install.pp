@@ -19,11 +19,18 @@ class nsclient::install {
   case downcase($::osfamily) {
     'windows': {
 
-      if ! defined(File[$nsclient::download_destination]) {
-        file { $nsclient::download_destination:
-          ensure => directory,
+      if $nsclient::chocolatey_provider {
+        package { $nsclient::params::chocolatey_package_name:
+          ensure   => $nsclient::chocolatey_package_version,
+          provider => 'chocolatey',
         }
       }
+      else {
+        if ! defined(File[$nsclient::download_destination]) {
+          file { $nsclient::download_destination:
+            ensure => directory,
+          }
+        }
 
         download_file { 'NSCP-Installer':
           url                   => $source,
@@ -32,14 +39,6 @@ class nsclient::install {
           require               => File[$nsclient::download_destination],
         }
 
-
-      if $nsclient::chocolatey_provider {
-        package { $nsclient::params::chocolatey_package_name:
-          ensure   => $nsclient::chocolatey_package_version,
-          provider => 'chocolatey',
-        }
-      }
-      else {
         package { $nsclient::package_name:
           ensure          => installed,
           source          => "${nsclient::download_destination}/${nsclient::package_source}",
