@@ -43,11 +43,10 @@
 # Password used to authenticate against server
 # default to undef
 #
-<<<<<<< HEAD
 # [*proxy_url*]
 # Specify a proxy url if needed for downloading the package
 # default to undef
-=======
+#
 # [*chocolatey_provider*]
 # Boolean, if true get nsclient from chocolatey. Default to false
 #
@@ -57,7 +56,6 @@
 # [*chocolatey_package_version*]
 # This is the package version from chocolatey repo.
 #
->>>>>>> Add chocolatey as a provider for installing the package
 # === Examples
 #
 # To install a different version:
