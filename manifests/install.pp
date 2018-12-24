@@ -33,18 +33,26 @@ class nsclient::install {
         }
 
 
-      package { $nsclient::package_name:
-        ensure          => installed,
-        source          => "${nsclient::download_destination}/${nsclient::package_source}",
-        provider        => 'windows',
-        install_options => [
-          '/quiet',
-          {
-            'INSTALLLOCATION'    => $nsclient::install_path,
-            'CONFIGURATION_TYPE' => "ini://${nsclient::install_path}\\nsclient.ini"
-          },
-        ],
-        require         => Download_file['NSCP-Installer'],
+      if $nsclient::chocolatey_provider {
+        package { $nsclient::params::chocolatey_package_name:
+          ensure   => $nsclient::chocolatey_package_version,
+          provider => 'chocolatey',
+        }
+      }
+      else {
+        package { $nsclient::package_name:
+          ensure          => installed,
+          source          => "${nsclient::download_destination}/${nsclient::package_source}",
+          provider        => 'windows',
+          install_options => [
+            '/quiet',
+            {
+              'INSTALLLOCATION'    => $nsclient::install_path,
+              'CONFIGURATION_TYPE' => "ini://${nsclient::install_path}\\nsclient.ini"
+            },
+          ],
+          require         => Download_file['NSCP-Installer'],
+        }
       }
     }
     default: {

@@ -46,6 +46,16 @@
 # [*proxy_url*]
 # Specify a proxy url if needed for downloading the package
 # default to undef
+#
+# [*chocolatey_provider*]
+# Boolean, if true get nsclient from chocolatey. Default to false
+#
+# [*chocolatey_package_name*]
+# This is the package name from chocolatey repo.
+#
+# [*chocolatey_package_version*]
+# This is the package version from chocolatey repo.
+#
 # === Examples
 #
 # To install a different version:
@@ -63,17 +73,20 @@
 #   }
 #
 class nsclient (
-  $allowed_hosts                 = $nsclient::params::allowed_hosts,
-  $service_state                 = $nsclient::params::service_state,
-  $service_enable                = $nsclient::params::service_enable,
-  $package_source_location       = $nsclient::params::package_source_location,
-  $package_source                = $nsclient::params::package_source,
-  $package_name                  = $nsclient::params::package_name,
-  $download_destination          = $nsclient::params::download_destination,
-  $config_template               = $nsclient::params::config_template,
-  $install_path                  = $nsclient::params::install_path,
-  Optional[String[1]] $proxy_url = $nsclient::params::proxy_url,
-  Optional[String[1]] $password  = $nsclient::params::password
+  $allowed_hosts                                  = $nsclient::params::allowed_hosts,
+  $service_state                                  = $nsclient::params::service_state,
+  $service_enable                                 = $nsclient::params::service_enable,
+  $package_source_location                        = $nsclient::params::package_source_location,
+  $package_source                                 = $nsclient::params::package_source,
+  $package_name                                   = $nsclient::params::package_name,
+  $download_destination                           = $nsclient::params::download_destination,
+  $config_template                                = $nsclient::params::config_template,
+  $install_path                                   = $nsclient::params::install_path,
+  Optional[String[1]] $password                   = $nsclient::params::password,
+  Optional[String[1]] $proxy_url                  = $nsclient::params::proxy_url,
+  Boolean $chocolatey_provider                    = $nsclient::params::chocolatey_provider,
+  Optional[String[1]] $chocolatey_package_name    = $nsclient::params::chocolatey_package_name,
+  Optional[String[1]] $chocolatey_package_version = $nsclient::params::chocolatey_package_version
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
