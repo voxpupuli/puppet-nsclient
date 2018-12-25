@@ -23,7 +23,6 @@ class nsclient::service(
       file { "${install_path}\\nsclient.ini":
         ensure  => file,
         owner   => 'SYSTEM',
-        mode    => '0664',
         content => template($config_template),
         notify  => Service['nscp'],
       }
