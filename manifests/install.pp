@@ -9,10 +9,7 @@
 #
 class nsclient::install {
 
-  validate_string($nsclient::package_source_location)
-  validate_string($nsclient::package_source)
-  validate_string($nsclient::package_name)
-  validate_string($nsclient::install_path)
+  assert_private("You're not supposed to do that!")
 
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
