@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.0](https://github.com/voxpupuli/puppet-nsclient/tree/v2.1.0) (2019-01-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-nsclient/compare/v2.0.1...v2.1.0)
+
+**Implemented enhancements:**
+
+- Add password field [\#16](https://github.com/voxpupuli/puppet-nsclient/issues/16)
+- Add chocolatey as a provider for installing the package [\#63](https://github.com/voxpupuli/puppet-nsclient/pull/63) ([hdep](https://github.com/hdep))
+- Add password variable [\#61](https://github.com/voxpupuli/puppet-nsclient/pull/61) ([hdep](https://github.com/hdep))
+- Add proxy support [\#58](https://github.com/voxpupuli/puppet-nsclient/pull/58) ([hdep](https://github.com/hdep))
+
+**Fixed bugs:**
+
+- download\_file should not happen when chocolatey is used [\#66](https://github.com/voxpupuli/puppet-nsclient/pull/66) ([hdep](https://github.com/hdep))
+- remove 'mode'  because it is not manage correctly by puppet on windows [\#65](https://github.com/voxpupuli/puppet-nsclient/pull/65) ([hdep](https://github.com/hdep))
+
+**Closed issues:**
+
+- This plugin should not use mode  [\#64](https://github.com/voxpupuli/puppet-nsclient/issues/64)
+- Allow nsclient install from chocolatey provider [\#59](https://github.com/voxpupuli/puppet-nsclient/issues/59)
+- Add support for proxy [\#57](https://github.com/voxpupuli/puppet-nsclient/issues/57)
+
+**Merged pull requests:**
+
+- Add 'FILE MANAGED BY PUPPET' header to template [\#60](https://github.com/voxpupuli/puppet-nsclient/pull/60) ([hdep](https://github.com/hdep))
+- Remove Linux acceptance nodesets [\#56](https://github.com/voxpupuli/puppet-nsclient/pull/56) ([ekohl](https://github.com/ekohl))
+- modulesync 2.2.0 and allow puppet 6.x [\#55](https://github.com/voxpupuli/puppet-nsclient/pull/55) ([bastelfreak](https://github.com/bastelfreak))
+-  replace validate\_\* with datatypes/assert\_type [\#40](https://github.com/voxpupuli/puppet-nsclient/pull/40) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.0.1](https://github.com/voxpupuli/puppet-nsclient/tree/v2.0.1) (2018-09-07)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-nsclient/compare/v2.0.0...v2.0.1)
