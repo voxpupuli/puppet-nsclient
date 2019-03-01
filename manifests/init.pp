@@ -89,7 +89,7 @@ class nsclient (
   Optional[String[1]] $chocolatey_package_version = $nsclient::params::chocolatey_package_version
 ) inherits nsclient::params {
 
-  class {'::nsclient::install':}
-  -> class {'::nsclient::service':}
+  class {'nsclient::install':}
+  -> class {'nsclient::service':}
 
 }
