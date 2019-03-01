@@ -37,7 +37,7 @@ Usage
 --
 To install nsclient with defaults:
 
-```puppet  
+```puppet
 include 'nsclient'
 ```
 
