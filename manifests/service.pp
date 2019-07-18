@@ -8,12 +8,12 @@
 # It manages the nsclient service
 #
 class nsclient::service(
-  $service_state   = $nsclient::service_state,
-  $service_enable  = $nsclient::service_enable,
-  $allowed_hosts   = $nsclient::allowed_hosts,
-  $config_template = $nsclient::config_template,
-  $install_path    = $nsclient::install_path,
-  $password        = $nsclient::password
+  $service_state  = $nsclient::service_state,
+  $service_enable = $nsclient::service_enable,
+  $allowed_hosts  = $nsclient::allowed_hosts,
+  $config_conten  = $nsclient::config_content,
+  $install_path   = $nsclient::install_path,
+  $password       = $nsclient::password
 ) {
 
   assert_private("You're not supposed to do that!")
@@ -23,7 +23,7 @@ class nsclient::service(
       file { "${install_path}\\nsclient.ini":
         ensure  => file,
         owner   => 'SYSTEM',
-        content => template($config_template),
+        content => $config_content,
         notify  => Service['nscp'],
       }
 
