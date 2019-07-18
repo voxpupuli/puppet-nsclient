@@ -14,15 +14,15 @@ class nsclient::service(
   $config_content  = $nsclient::config_content,
   $config_template = $nsclient::config_template,
   $install_path    = $nsclient::install_path,
-  $password        = $nsclient::password
+  $password        = $nsclient::password,
 ) {
 
   assert_private("You're not supposed to do that!")
 
   if $config_content == '' {
-    $real_content = $config_content
-  } else {
     $real_content = epp($config_template)
+  } else {
+    $real_content = $config_content
   }
 
   case downcase($::osfamily) {
