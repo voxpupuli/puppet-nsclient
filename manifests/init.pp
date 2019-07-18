@@ -80,7 +80,7 @@ class nsclient (
   String $package_source                          = $nsclient::params::package_source,
   String $package_name                            = $nsclient::params::package_name,
   $download_destination                           = $nsclient::params::download_destination,
-  String $config_content                          = $nsclient::params::config_content,
+  String $config_content                          = epp('nsclient/nsclient.ini.epp'),
   String $install_path                            = $nsclient::params::install_path,
   Optional[String[1]] $password                   = $nsclient::params::password,
   Optional[String[1]] $proxy_url                  = $nsclient::params::proxy_url,
