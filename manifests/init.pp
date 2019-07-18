@@ -36,8 +36,8 @@
 # Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
 # recursively check the file path.
 #
-# [*config_content*]
-# This is the content you want to use as the config file. It will default to using a provided template
+# [*config_template*]
+# This is the template to use as the config file.
 #
 # [*password*]
 # Password used to authenticate against server
@@ -80,7 +80,7 @@ class nsclient (
   String $package_source                          = $nsclient::params::package_source,
   String $package_name                            = $nsclient::params::package_name,
   $download_destination                           = $nsclient::params::download_destination,
-  String $config_content                          = $nsclient::params::config_content,
+  String $config_template                         = $nsclient::params::config_template,
   String $install_path                            = $nsclient::params::install_path,
   Optional[String[1]] $password                   = $nsclient::params::password,
   Optional[String[1]] $proxy_url                  = $nsclient::params::proxy_url,
