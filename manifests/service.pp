@@ -11,7 +11,7 @@ class nsclient::service(
   $service_state  = $nsclient::service_state,
   $service_enable = $nsclient::service_enable,
   $allowed_hosts  = $nsclient::allowed_hosts,
-  $config_conten  = $nsclient::config_content,
+  $config_content = $nsclient::config_content,
   $install_path   = $nsclient::install_path,
   $password       = $nsclient::password
 ) {
