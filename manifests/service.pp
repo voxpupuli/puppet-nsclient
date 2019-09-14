@@ -19,10 +19,10 @@ class nsclient::service(
 
   assert_private("You're not supposed to do that!")
 
-  if $config_content == '' {
-    $real_content = epp($config_template)
-  } else {
+  if $config_content {
     $real_content = $config_content
+  } else {
+    $real_content = epp($config_template)
   }
 
   case downcase($::osfamily) {
