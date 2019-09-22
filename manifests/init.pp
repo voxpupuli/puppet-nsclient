@@ -39,6 +39,9 @@
 # [*config_template*]
 # This is the template to use as the config file.
 #
+# [*config_content*]
+# This is the content you want to use as the config file if defined
+#
 # [*password*]
 # Password used to authenticate against server
 # default to undef
@@ -80,6 +83,7 @@ class nsclient (
   String $package_source                          = $nsclient::params::package_source,
   String $package_name                            = $nsclient::params::package_name,
   $download_destination                           = $nsclient::params::download_destination,
+  Optional[String[1]] $config_content             = undef,
   String $config_template                         = $nsclient::params::config_template,
   String $install_path                            = $nsclient::params::install_path,
   Optional[String[1]] $password                   = $nsclient::params::password,

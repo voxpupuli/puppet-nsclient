@@ -15,7 +15,7 @@ class nsclient::params {
   $package_name               = 'NSClient++ (x64)'
   $package_source             = 'NSCP-0.5.1.28-x64.msi'
   $download_destination       = 'c:/temp'
-  $config_template            = 'nsclient/nsclient.ini.erb'
+  $config_template            = 'nsclient/nsclient.ini.epp'
   $install_path               = 'C:\Program Files\NSClient++'
   $proxy_url                  = undef
   $password                   = undef

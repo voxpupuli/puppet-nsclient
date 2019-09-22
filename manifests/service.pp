@@ -11,19 +11,26 @@ class nsclient::service(
   $service_state   = $nsclient::service_state,
   $service_enable  = $nsclient::service_enable,
   $allowed_hosts   = $nsclient::allowed_hosts,
+  $config_content  = $nsclient::config_content,
   $config_template = $nsclient::config_template,
   $install_path    = $nsclient::install_path,
-  $password        = $nsclient::password
+  $password        = $nsclient::password,
 ) {
 
   assert_private("You're not supposed to do that!")
+
+  if $config_content {
+    $real_content = $config_content
+  } else {
+    $real_content = epp($config_template)
+  }
 
   case downcase($::osfamily) {
     'windows': {
       file { "${install_path}\\nsclient.ini":
         ensure  => file,
         owner   => 'SYSTEM',
-        content => template($config_template),
+        content => $real_content,
         notify  => Service['nscp'],
       }
 
