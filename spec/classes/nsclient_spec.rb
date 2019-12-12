@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'nsclient', type: :class do
   let(:facts) do
     {
-      osfamily: 'Windows'
+      os: { family: 'windows' }
     }
   end
   let(:params) do
@@ -57,7 +57,11 @@ describe 'nsclient', type: :class do
   end
 
   context 'when trying to install on Ubuntu' do
-    let(:facts) { { osfamily: 'Ubuntu' } }
+    let(:facts) do
+      {
+        os: { family: 'Ubuntu' }
+      }
+    end
 
     it do
       expect do
