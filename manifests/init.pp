@@ -83,7 +83,7 @@ class nsclient (
   String $package_source                          = $nsclient::params::package_source,
   String $package_name                            = $nsclient::params::package_name,
   $download_destination                           = $nsclient::params::download_destination,
-  String $config_content                          = '',
+  Optional[String[1]] $config_content             = undef,
   String $config_template                         = $nsclient::params::config_template,
   String $install_path                            = $nsclient::params::install_path,
   Optional[String[1]] $password                   = $nsclient::params::password,
