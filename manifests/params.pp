@@ -22,7 +22,7 @@ class nsclient::params {
   $chocolatey_provider        = false
   $chocolatey_package_name    = 'nscp'
 
-  if chocolatey_provider {
+  if $chocolatey_provider {
     $package_version = '0.5.2.39'
   } else {
     $package_version = '0.5.1.28'
