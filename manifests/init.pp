@@ -56,8 +56,10 @@
 # [*chocolatey_package_name*]
 # This is the package name from chocolatey repo.
 #
-# [*chocolatey_package_version*]
-# This is the package version from chocolatey repo.
+# [*package_version*]
+# This is the package version either from chocolatey repo or what you install from MSI.
+# Specifying this for a MSI allows you to upgrade versions as without it, the client will
+# not update.
 #
 # === Examples
 #
@@ -90,7 +92,7 @@ class nsclient (
   Optional[String[1]] $proxy_url                  = $nsclient::params::proxy_url,
   Boolean $chocolatey_provider                    = $nsclient::params::chocolatey_provider,
   Optional[String[1]] $chocolatey_package_name    = $nsclient::params::chocolatey_package_name,
-  Optional[String[1]] $chocolatey_package_version = $nsclient::params::chocolatey_package_version
+  Optional[String[1]] $package_version            = $nsclient::params::package_version,
 ) inherits nsclient::params {
 
   class {'nsclient::install':}

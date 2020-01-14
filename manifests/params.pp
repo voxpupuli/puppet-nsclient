@@ -21,5 +21,5 @@ class nsclient::params {
   $password                   = undef
   $chocolatey_provider        = false
   $chocolatey_package_name    = 'nscp'
-  $chocolatey_package_version = '0.5.2.39'
+  $package_version            = '0.5.2.39'
 }
