@@ -27,7 +27,7 @@ describe 'nsclient', type: :class do
     end
     it do
       is_expected.to contain_package('NSCP-0.5.1.28-x64.msi').with(
-        'ensure'   => 'installed',
+        'ensure'   => '0.5.1.28',
         'provider' => 'windows',
         'source'   => 'c:/temp/NSCP-0.5.1.28-x64.msi',
         'require'  => 'Download_file[NSCP-Installer]'
@@ -40,7 +40,8 @@ describe 'nsclient', type: :class do
   context 'installing a custom version' do
     let(:params) do
       {
-        package_source: 'NSCP-Custom-build.msi',
+        package_version: 'Custom-build',
+        package_source: 'NSCP-Custom-build-x64.msi',
         package_name: 'NSClient++ (x64)',
         package_source_location: 'http://myproxy.com:8080'
       }
@@ -48,9 +49,9 @@ describe 'nsclient', type: :class do
 
     it do
       is_expected.to contain_package('NSClient++ (x64)').with(
-        'ensure'   => 'installed',
+        'ensure'   => 'Custom-build',
         'provider' => 'windows',
-        'source'   => 'c:/temp/NSCP-Custom-build.msi',
+        'source'   => 'c:/temp/NSCP-Custom-build-x64.msi',
         'require'  => 'Download_file[NSCP-Installer]'
       )
     end
