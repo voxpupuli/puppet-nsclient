@@ -37,7 +37,7 @@ class nsclient::install {
         }
 
         package { $nsclient::package_name:
-          ensure          => installed,
+          ensure          => 'latest',
           source          => "${nsclient::download_destination}/${nsclient::package_source}",
           provider        => 'windows',
           install_options => [
