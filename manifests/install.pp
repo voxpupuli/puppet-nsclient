@@ -18,7 +18,7 @@ class nsclient::install {
 
       if $nsclient::chocolatey_provider {
         package { $nsclient::params::chocolatey_package_name:
-          ensure   => $nsclient::chocolatey_package_version,
+          ensure   => $nsclient::package_version,
           provider => 'chocolatey',
         }
       }
@@ -37,7 +37,7 @@ class nsclient::install {
         }
 
         package { $nsclient::package_name:
-          ensure          => installed,
+          ensure          => $nsclient::package_version,
           source          => "${nsclient::download_destination}/${nsclient::package_source}",
           provider        => 'windows',
           install_options => [
