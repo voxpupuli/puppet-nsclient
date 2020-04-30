@@ -13,7 +13,7 @@ class nsclient::install {
 
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
-  case downcase($::osfamily) {
+  case downcase($facts['os']['family']) {
     'windows': {
 
       if $nsclient::chocolatey_provider {

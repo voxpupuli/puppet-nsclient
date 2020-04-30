@@ -25,7 +25,7 @@ class nsclient::service(
     $real_content = epp($config_template)
   }
 
-  case downcase($::osfamily) {
+  case downcase($facts['os']['family']) {
     'windows': {
       file { "${install_path}\\nsclient.ini":
         ensure  => file,

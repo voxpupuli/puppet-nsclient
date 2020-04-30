@@ -95,7 +95,9 @@ describe 'nsclient' do
   end
 
   context 'when trying to install on Ubuntu' do
-    let(:facts) { { osfamily: 'Ubuntu' } }
+    let(:facts) do
+      { os: { family: 'Ubuntu' } }
+    end
 
     it { is_expected.to compile.and_raise_error(%r{This module only works on Windows based systems.}) }
   end
