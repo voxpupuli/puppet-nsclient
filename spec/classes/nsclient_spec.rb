@@ -60,11 +60,7 @@ describe 'nsclient', type: :class do
   context 'when trying to install on Ubuntu' do
     let(:facts) { { osfamily: 'Ubuntu' } }
 
-    it do
-      expect do
-        is_expected.to contain_class('nsclient')
-      end.to raise_error(Puppet::Error, %r{This module only works on Windows based systems.})
-    end
+    it { is_expected.to compile.and_raise_error(%r{This module only works on Windows based systems.}) }
   end
 
   context 'with service_state set to stopped' do
