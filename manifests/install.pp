@@ -8,14 +8,12 @@
 # It downloads the package and installs it.
 #
 class nsclient::install {
-
   assert_private("You're not supposed to do that!")
 
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
   case $facts['os']['family'] {
     'windows': {
-
       if $nsclient::chocolatey_provider {
         package { $nsclient::params::chocolatey_package_name:
           ensure   => $nsclient::chocolatey_package_version,
