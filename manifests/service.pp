@@ -7,7 +7,7 @@
 # This private class is meant to be called from `nsclient`.
 # It manages the nsclient service
 #
-class nsclient::service(
+class nsclient::service (
   $service_state   = $nsclient::service_state,
   $service_enable  = $nsclient::service_enable,
   $allowed_hosts   = $nsclient::allowed_hosts,
@@ -16,7 +16,6 @@ class nsclient::service(
   $install_path    = $nsclient::install_path,
   $password        = $nsclient::password,
 ) {
-
   assert_private("You're not supposed to do that!")
 
   if $config_content {
