@@ -17,12 +17,14 @@ describe 'nsclient' do
         it { is_expected.to contain_class('nsclient::install').that_comes_before('Class[nsclient::service]') }
         it { is_expected.to contain_class('nsclient::service') }
         it { is_expected.to contain_class('nsclient::params') }
+
         it do
           is_expected.to contain_download_file('NSCP-Installer').with(
             'url'                   => 'https://github.com/mickem/nscp/releases/download/0.5.1.28/NSCP-0.5.1.28-x64.msi',
             'destination_directory' => 'c:/temp'
           )
         end
+
         it do
           is_expected.to contain_package('NSCP-0.5.1.28-x64.msi').with(
             'ensure'   => '0.5.1.28',
@@ -31,8 +33,8 @@ describe 'nsclient' do
             'require'  => 'Download_file[NSCP-Installer]'
           )
         end
+
         it { is_expected.to contain_service('nscp').with_ensure('running') }
-        #
       end
 
       context 'installing a custom version' do
