@@ -4,7 +4,30 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v2.1.0](https://github.com/voxpupuli/puppet-nsclient/tree/v2.1.0) (2019-01-04)
+## [v3.0.0](https://github.com/voxpupuli/puppet-nsclient/tree/v3.0.0) (2024-03-17)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-nsclient/compare/v2.1.0...v3.0.0)
+
+**Breaking changes:**
+
+- Update supported Windows versions [\#91](https://github.com/voxpupuli/puppet-nsclient/pull/91) ([yakatz](https://github.com/yakatz))
+- Drop Puppet 6 support [\#86](https://github.com/voxpupuli/puppet-nsclient/pull/86) ([bastelfreak](https://github.com/bastelfreak))
+- modulesync 2.7.0 and drop puppet 4 [\#71](https://github.com/voxpupuli/puppet-nsclient/pull/71) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add support for upgrades [\#7](https://github.com/voxpupuli/puppet-nsclient/issues/7)
+- Add Puppet 8 support [\#88](https://github.com/voxpupuli/puppet-nsclient/pull/88) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#87](https://github.com/voxpupuli/puppet-nsclient/pull/87) ([bastelfreak](https://github.com/bastelfreak))
+- allow specification of package version - allows upgrades [\#78](https://github.com/voxpupuli/puppet-nsclient/pull/78) ([rstuart-indue](https://github.com/rstuart-indue))
+- replacing config\_template with config\_content [\#74](https://github.com/voxpupuli/puppet-nsclient/pull/74) ([rstuart-indue](https://github.com/rstuart-indue))
+
+**Merged pull requests:**
+
+- Allow stdlib 8.0.0 [\#83](https://github.com/voxpupuli/puppet-nsclient/pull/83) ([smortex](https://github.com/smortex))
+- Allow puppetlabs/stdlib 6.x [\#77](https://github.com/voxpupuli/puppet-nsclient/pull/77) ([dhoppe](https://github.com/dhoppe))
+
+## [v2.1.0](https://github.com/voxpupuli/puppet-nsclient/tree/v2.1.0) (2019-03-01)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-nsclient/compare/v2.0.1...v2.1.0)
 
