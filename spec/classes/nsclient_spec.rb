@@ -8,7 +8,7 @@ describe 'nsclient' do
         {
           package_source_location: 'https://github.com/mickem/nscp/releases/download/0.5.1.28',
           package_name: 'NSCP-0.5.1.28-x64.msi',
-          download_destination: 'c:/temp'
+          download_destination: 'c:/temp',
         }
       end
 
@@ -21,7 +21,7 @@ describe 'nsclient' do
         it do
           is_expected.to contain_download_file('NSCP-Installer').with(
             'url'                   => 'https://github.com/mickem/nscp/releases/download/0.5.1.28/NSCP-0.5.1.28-x64.msi',
-            'destination_directory' => 'c:/temp'
+            'destination_directory' => 'c:/temp',
           )
         end
 
@@ -30,7 +30,7 @@ describe 'nsclient' do
             'ensure'   => '0.5.1.28',
             'provider' => 'windows',
             'source'   => 'c:/temp/NSCP-0.5.1.28-x64.msi',
-            'require'  => 'Download_file[NSCP-Installer]'
+            'require'  => 'Download_file[NSCP-Installer]',
           )
         end
 
@@ -43,7 +43,7 @@ describe 'nsclient' do
             package_version: 'Custom-build',
             package_source: 'NSCP-Custom-build-x64.msi',
             package_name: 'NSClient++ (x64)',
-            package_source_location: 'http://myproxy.com:8080'
+            package_source_location: 'http://myproxy.com:8080',
           }
         end
 
@@ -52,7 +52,7 @@ describe 'nsclient' do
             'ensure'   => 'Custom-build',
             'provider' => 'windows',
             'source'   => 'c:/temp/NSCP-Custom-build-x64.msi',
-            'require'  => 'Download_file[NSCP-Installer]'
+            'require'  => 'Download_file[NSCP-Installer]',
           )
         end
       end
